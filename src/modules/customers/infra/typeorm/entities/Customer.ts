@@ -6,15 +6,23 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-class Customer {
+import ICustomer from '@modules/customers/models/ICustomer';
+
+@Entity('customers')
+class Customer implements ICustomer {
+  @PrimaryGeneratedColumn()
   id: string;
 
+  @Column()
   name: string;
 
+  @Column()
   email: string;
 
+  @CreateDateColumn()
   created_at: Date;
 
+  @UpdateDateColumn()
   updated_at: Date;
 }
 
